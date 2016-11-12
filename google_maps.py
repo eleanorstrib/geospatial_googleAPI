@@ -2,9 +2,11 @@ import os
 import csv
 import json
 import requests
+import time
 
 API_KEY = os.environ['GOOGLE_API_KEY']
-# Sample API call with address https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
+
+start_time = time.clock()
 file_reader=csv.reader(open('sample.csv', 'rU'), dialect='excel')
 next(file_reader) # skip header row
 row_no = 1
@@ -24,4 +26,5 @@ for row in file_reader:
 
 	row_no += 1
 
+print ("Program took {} seconds to execute".format((time.clock()-start_time)))
 # Sample API call with address https://maps.googleapis.com/maps/api/geocode/json?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA&key=YOUR_API_KEY
